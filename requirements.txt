@@ -1,0 +1,11 @@
+cloudpickle==3.1.0
+gym==0.26.2
+gym-notices==0.0.8
+gym-super-mario-bros==7.4.0
+importlib_metadata==8.5.0
+nes_py==8.2.1
+numpy==1.24.4
+pyglet==1.5.21
+PyOpenGL @ file:///home/conda/feedstock_root/build_artifacts/pyopengl_1652285526610/work
+tqdm==4.67.1
+zipp==3.20.2
