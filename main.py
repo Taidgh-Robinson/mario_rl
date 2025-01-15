@@ -5,12 +5,13 @@ import gym
 import torch
 from framestack import FrameStack
 from model import DQN
+from dqn_holder import DQNHolder
 
 env = gym.make('SuperMarioBros-v0', apply_api_compatibility=True, render_mode="human")
 env = JoypadSpace(env, SIMPLE_MOVEMENT)
 
-fs = FrameStack(env, 6)
-fs.reset()
+dqnH = DQNHolder(env, True, 'Mario')
+
 
 done = True
 """ for step in range(1000):
@@ -23,13 +24,11 @@ done = True
  """
 
 for i in range(10):
-    fs.step(1)
+    dqnH.framestack.step(1)
 
-data = fs.get_stack()
+data = dqnH.framestack.get_stack()
 reshaped = data.reshape(18, 240, 256)
 tens = torch.from_numpy(reshaped)
-d = DQN(7)
-output = d(tens/255)
+print(tens)
 
-print(output.shape)
 env.close()

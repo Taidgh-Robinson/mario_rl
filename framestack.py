@@ -14,7 +14,7 @@ class FrameStack:
         state, info = self.env.reset()
         #fill the deque with 0s
         for _ in range(self.queue_length):
-            self.frames.append(np.zeros((self.frame_height, self.frame_width, 3), dtype=np.uint8))
+            self.frames.append(np.zeros((self.frame_height, self.frame_width, self.queue_length), dtype=np.uint8))
         
         #Then add the first frame of the game
         self.frames.append(state)
