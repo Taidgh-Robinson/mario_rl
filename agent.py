@@ -7,7 +7,7 @@ class Agent():
     def __init__(self):
         pass
 
-    def select_action_linearly(self,policy_net, steps_done, state, joypad_space):
+    def select_action_linearly(self, policy_net, steps_done, state, joypad_space):
         sample = random.random()
         if(steps_done <= EPS_END_STEP_COUNT):
             eps_threshold = EPS_START + ((steps_done / (EPS_END_STEP_COUNT - 1)) * (EPS_END - EPS_START))

@@ -20,6 +20,5 @@ class ReplayMemory(object):
 
     def __repr__(self):
         for i in self.memory: 
-            print(i)
-            
+            print("{} : {}".format(str(i.action), str(i.reward)))
         return ""

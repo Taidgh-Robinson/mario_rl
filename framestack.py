@@ -2,11 +2,12 @@ import numpy as np
 from collections import deque
 
 class FrameStack:
-    def __init__(self, env, queue_length, frame_height=240, frame_width=256):
+    def __init__(self, env, queue_length, frame_height=240, frame_width=256, channels=3):
         self.env = env  
         self.queue_length = queue_length
         self.frame_height = frame_height
         self.frame_width = frame_width
+        self.channels = channels
         self.frames = deque(maxlen=queue_length)
 
     def reset(self):
@@ -14,7 +15,7 @@ class FrameStack:
         state, info = self.env.reset()
         #fill the deque with 0s
         for _ in range(self.queue_length):
-            self.frames.append(np.zeros((self.frame_height, self.frame_width, self.queue_length), dtype=np.uint8))
+            self.frames.append(np.zeros((self.frame_height, self.frame_width, self.channels), dtype=np.uint8))
         
         #Then add the first frame of the game
         self.frames.append(state)

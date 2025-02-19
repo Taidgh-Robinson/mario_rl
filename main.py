@@ -10,7 +10,7 @@ from dqn_holder import DQNHolder
 env = gym.make('SuperMarioBros-v0', apply_api_compatibility=True, render_mode="human")
 env = JoypadSpace(env, SIMPLE_MOVEMENT)
 
-dqnH = DQNHolder(env, True, 'Mario')
+dqnH = DQNHolder(env, True, 'Mario', SIMPLE_MOVEMENT)
 
 
 done = True
@@ -23,12 +23,8 @@ done = True
        state = env.reset()
  """
 
-for i in range(10):
-    dqnH.framestack.step(1)
-
-data = dqnH.framestack.get_stack()
-reshaped = data.reshape(18, 240, 256)
-tens = torch.from_numpy(reshaped)
-print(tens)
+dqnH.run_episode_to_failure()
+print(dqnH.memory)
+print(len(dqnH.memory))
 
 env.close()
